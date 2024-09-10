@@ -8,10 +8,10 @@
   </head>
   <body>
     <script type="text/javascript">
-      // Redirect all 404 errors to index.html
       var redirect = window.location.pathname;
-      if (redirect !== '/') {
-        window.location.href = '/';
+      // Redirect any path that is not the root to index.html
+      if (redirect !== '/ExplodingKittens/') {
+        window.location.href = '/ExplodingKittens/';
       }
     </script>
   </body>

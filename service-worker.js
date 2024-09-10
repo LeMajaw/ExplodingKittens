@@ -1,11 +1,11 @@
 const CACHE_NAME = 'my-cache-v1';
 const URLs_TO_CACHE = [
-  '/',                        // Root of your app
+  '/ExplodingKittens/',                        // Root of your app
   '/ExplodingKittens/index.html',              // Corrected path for index.html
-  '/ExplodingKittens/static/js/main.js', // Hashed JS file
-  '/ExplodingKittens/static/css/main.css', // Hashed CSS file
-  '/ExplodingKittens/explodingKittensIcon.png',  // App icon
-  '/ExplodingKittens/explodingKittensIcon.ico',  // App icon
+  '/ExplodingKittens/static/js/main.js',       // Corrected path for main.js
+  '/ExplodingKittens/static/css/main.css',     // Corrected path for main.css
+  '/ExplodingKittens/explodingKittensIcon.png',// Corrected path for app icon
+  '/ExplodingKittens/explodingKittensIcon.ico' // Corrected path for favicon
 ];
 
 self.addEventListener('install', (event) => {
@@ -16,7 +16,6 @@ self.addEventListener('install', (event) => {
   );
 });
 
-// Fetch event - serve cached files when available, fallback to network
 self.addEventListener('fetch', (event) => {
   event.respondWith(
     caches.match(event.request).then((response) => {
@@ -24,7 +23,7 @@ self.addEventListener('fetch', (event) => {
         return response; // return cached file
       }
 
-      // If the request is for navigation to a client-side route (e.g., /game)
+      // If the request is for a navigation route (e.g., /game)
       if (event.request.mode === 'navigate') {
         return caches.match('/ExplodingKittens/index.html');
       }
