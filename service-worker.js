@@ -2,8 +2,8 @@ const CACHE_NAME = 'my-cache-v1';
 const URLs_TO_CACHE = [
   '/ExplodingKittens/',                         // Root of your app
   '/ExplodingKittens/index.html',               // Corrected path for index.html
-  '/ExplodingKittens/static/js/main.js',        // Corrected path for JS
-  '/ExplodingKittens/static/css/main.css',      // Corrected path for CSS
+  '/ExplodingKittens/static/js/main.984c3d98.js',        // Corrected path for JS
+  '/ExplodingKittens/static/css/main.f6cfc5e0.css',      // Corrected path for CSS
   '/ExplodingKittens/explodingKittensIcon.png', // Corrected path for app icon
   '/ExplodingKittens/explodingKittensIcon.ico'  // Corrected path for favicon
 ];
