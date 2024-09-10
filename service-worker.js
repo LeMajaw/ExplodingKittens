@@ -1,21 +1,19 @@
 // public/service-worker.js
-
-const CACHE_NAME = 'exploding-kittens-cache-v1';
+const CACHE_NAME = 'my-cache-v1';
 const URLs_TO_CACHE = [
-  '/Exploding-Kittens/',
-  '/Exploding-Kittens/index.html',
-  '/Exploding-Kittens/static/js/bundle.js',
-  '/Exploding-Kittens/static/css/main.css',
-  '/Exploding-Kittens/icon-512x512.png',
-  // Add other static files that should be cached here
+  '/ExplodingKittens/',          // Root of your app
+  '/ExplodingKittens/index.html', // Corrected path for index.html
+  '/ExplodingKittens/static/js/main.js',
+  '/ExplodingKittens/static/css/main.css',
+  '/ExplodingKittens/explodingKittensIcon.png',
+  '/ExplodingKittens/explodingKittensIcon.ico'
 ];
 
-// Install event - cache essential files
 self.addEventListener('install', (event) => {
   event.waitUntil(
-    caches.open(CACHE_NAME).then((cache) => {
-      return cache.addAll(URLs_TO_CACHE);
-    })
+    caches.open(CACHE_NAME)
+      .then((cache) => cache.addAll(URLs_TO_CACHE))
+      .catch((err) => console.log('Failed to cache:', err))
   );
 });
 
