@@ -1,12 +1,11 @@
-// public/service-worker.js
 const CACHE_NAME = 'my-cache-v1';
 const URLs_TO_CACHE = [
-  '/ExplodingKittens/',          // Root of your app
-  '/ExplodingKittens/index.html', // Corrected path for index.html
-  '/ExplodingKittens/static/js/main.js',
-  '/ExplodingKittens/static/css/main.css',
-  '/ExplodingKittens/explodingKittensIcon.png',
-  '/ExplodingKittens/explodingKittensIcon.ico'
+  '/ExplodingKittens/',                        // Root of your app
+  '/ExplodingKittens/index.html',              // Corrected path for index.html
+  '/ExplodingKittens/static/js/main.894323d8.js', // Hashed JS file
+  '/ExplodingKittens/static/css/main.f6cfc5e0.css', // Hashed CSS file
+  '/ExplodingKittens/explodingKittensIcon.png',  // App icon
+  '/ExplodingKittens/explodingKittensIcon.ico',  // App icon
 ];
 
 self.addEventListener('install', (event) => {
@@ -25,13 +24,13 @@ self.addEventListener('fetch', (event) => {
         return response; // return cached file
       }
 
-      // If the request is for a navigation to a client-side route (e.g., /game)
+      // If the request is for navigation to a client-side route (e.g., /game)
       if (event.request.mode === 'navigate') {
-        return caches.match('/Exploding-Kittens/index.html');
+        return caches.match('/ExplodingKittens/index.html');
       }
 
       return fetch(event.request).catch(() =>
-        caches.match('/Exploding-Kittens/index.html')
+        caches.match('/ExplodingKittens/index.html')
       );
     })
   );
