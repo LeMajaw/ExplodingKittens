@@ -24,7 +24,7 @@ document.head.appendChild(link3);
 const root = createRoot(document.getElementById('root'));
 
 root.render(
-  <BrowserRouter>
+  <BrowserRouter basename="/ExplodingKittens">
     <App />
   </BrowserRouter>
 );
@@ -32,7 +32,7 @@ root.render(
 // Register service worker
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
-    navigator.serviceWorker.register('/service-worker.js')
+    navigator.serviceWorker.register(`${process.env.PUBLIC_URL}/service-worker.js`)
       .then((registration) => {
         console.log('ServiceWorker registration successful with scope: ', registration.scope);
       })

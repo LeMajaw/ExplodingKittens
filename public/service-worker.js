@@ -1,39 +1,40 @@
-// public/service-worker.js
-
-const CACHE_NAME = 'exploding-kittens-cache-v1';
+const CACHE_NAME = 'my-cache-v1';
 const URLs_TO_CACHE = [
-  '/Exploding-Kittens/',
-  '/Exploding-Kittens/index.html',
-  '/Exploding-Kittens/static/js/bundle.js',
-  '/Exploding-Kittens/static/css/main.css',
-  '/Exploding-Kittens/icon-512x512.png',
-  // Add other static files that should be cached here
+  '/ExplodingKittens/',                         // Root of your app
+  '/ExplodingKittens/index.html',               // Corrected path for index.html
+  '/ExplodingKittens/static/js/main.984c3d98.js',        // Corrected path for JS
+  '/ExplodingKittens/static/css/main.f6cfc5e0.css',      // Corrected path for CSS
+  '/ExplodingKittens/explodingKittensIcon.png', // Corrected path for app icon
+  '/ExplodingKittens/explodingKittensIcon.ico'  // Corrected path for favicon
 ];
 
-// Install event - cache essential files
 self.addEventListener('install', (event) => {
   event.waitUntil(
-    caches.open(CACHE_NAME).then((cache) => {
-      return cache.addAll(URLs_TO_CACHE);
-    })
+    caches.open(CACHE_NAME)
+      .then((cache) => {
+        return cache.addAll(URLs_TO_CACHE);
+      })
+      .catch((err) => {
+        console.error('Failed to cache:', err);
+      })
   );
 });
 
-// Fetch event - serve cached files when available, fallback to network
 self.addEventListener('fetch', (event) => {
   event.respondWith(
     caches.match(event.request).then((response) => {
       if (response) {
-        return response; // return cached file
+        return response; // Return the cached file if found
       }
 
-      // If the request is for a navigation to a client-side route (e.g., /game)
+      // Handle navigation to client-side routes (e.g., /game)
       if (event.request.mode === 'navigate') {
-        return caches.match('/Exploding-Kittens/index.html');
+        return caches.match('/ExplodingKittens/index.html');
       }
 
-      return fetch(event.request).catch(() =>
-        caches.match('/Exploding-Kittens/index.html')
+      // Fetch the request if not found in cache
+      return fetch(event.request).catch(() => 
+        caches.match('/ExplodingKittens/index.html')
       );
     })
   );
