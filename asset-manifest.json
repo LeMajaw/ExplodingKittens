@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/ExplodingKittens/static/css/main.f6cfc5e0.css",
-    "main.js": "/ExplodingKittens/static/js/main.7c7b1903.js",
+    "main.js": "/ExplodingKittens/static/js/main.894323d8.js",
     "static/media/paw.png": "/ExplodingKittens/static/media/paw.4a431a6f93c97a661ec9.png",
     "static/media/paw_selected.png": "/ExplodingKittens/static/media/paw_selected.ab6bed5332f5659fd0e7.png",
     "index.html": "/ExplodingKittens/index.html",
     "main.f6cfc5e0.css.map": "/ExplodingKittens/static/css/main.f6cfc5e0.css.map",
-    "main.7c7b1903.js.map": "/ExplodingKittens/static/js/main.7c7b1903.js.map"
+    "main.894323d8.js.map": "/ExplodingKittens/static/js/main.894323d8.js.map"
   },
   "entrypoints": [
     "static/css/main.f6cfc5e0.css",
-    "static/js/main.7c7b1903.js"
+    "static/js/main.894323d8.js"
   ]
 }
