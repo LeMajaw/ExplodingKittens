@@ -1,0 +1,402 @@
+/* CatButton.css */
+:root {
+    --bg: #344661;
+    --greyBase: #fff;
+    --greyDark: #b7b7b7;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    height: 100%;
+    width: 100%;
+    background: var(--bg);
+    overflow: hidden;
+    margin: 0;
+}
+
+p {
+    padding: 24px;
+    position: absolute;
+    color: #e0e0e0;
+    font-size: 2.4rem;
+    font-family: 'Assistant', sans-serif;
+    top: 0;
+}
+
+p span {
+    color: #b0b0b0;
+}
+
+.container {
+    position: relative;
+    width: 100px;
+    height: 100px;
+    bottom: 0; /* Align it to the bottom of the viewport */
+    left: 46%; /* Default for larger screens */
+    transform: translateX(-50%); /* Keep the cat centered horizontally */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 20px; /* Optional: Add padding to prevent edge clipping */
+}
+
+/* Adjust position for smaller screens */
+@media (max-width: 768px) {
+    .container {
+        left: 36%; /* Center on smaller screens */
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        left: 34%; /* Move slightly more to the center for very small screens */
+    }
+}
+
+.cat {
+    width: 115px;
+    height: 170px;
+    position: relative;
+    cursor: pointer;
+    background: transparent; /* Ensure no background color */
+    margin-right: 30px;
+}
+
+.head {
+    background: var(--greyBase);
+    width: 114px;
+    height: 100px;
+    border-radius: 141% 98% 55% 189%;
+    position: absolute;
+    top: 15px;
+    left: 0;
+    transform: translateY(10px);
+    z-index: 25;
+    animation: sleep 4s ease-out infinite;
+}
+
+.head.awake {
+    animation: none; /* Stop head movement when awake */
+    transform: translateY(0); /* Ensure head stays in place */
+}
+
+@keyframes sleep {
+    0% {
+        transform: translateY(10px);
+    }
+    50% {
+        transform: translateY(0);
+    }
+    100% {
+        transform: translateY(10px);
+    }
+}
+
+.ears {
+    position: absolute;
+    width: 100%;
+    top: -32px;
+    left: 50%;
+    transform: translateX(-50%);
+    height: 40px;
+}
+
+.ears > div {
+    height: 20px;
+    width: 2px;
+    position: absolute;
+    border-bottom: 40px solid var(--greyBase);
+    border-left: 30px solid transparent;
+    border-right: 7px solid transparent;
+    border-top: 0;
+    transform-origin: bottom;
+}
+
+.ears > div:nth-child(1) {
+    left: 64px;
+    transform: rotate(-5deg);
+    border-radius: 14px 46px 0 28px;
+}
+
+.ears > div:nth-child(1)::before {
+    content: '';
+    height: 15px;
+    width: 0;
+    position: absolute;
+    border-bottom: 22px solid var(--greyDark);
+    border-left: 8px solid transparent;
+    border-right: 2px solid transparent;
+    left: -11px;
+    top: 5px;
+    transform: rotate(10deg);
+}
+
+.ears > div:nth-child(2) {
+    left: 13px;
+    transform: rotate(-22deg);
+    border-radius: 0 34px 3px 0;
+}
+
+.ears > div:nth-child(2)::before {
+    content: '';
+    height: 15px;
+    width: 0;
+    position: absolute;
+    border-bottom: 22px solid var(--greyDark);
+    border-left: 8px solid transparent;
+    border-right: 2px solid transparent;
+    left: -11px;
+    top: 5px;
+    transform: rotate(10deg);
+}
+
+.face {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 25px;
+    height: 93%;
+    position: relative;
+    z-index: 1;
+}
+
+.eyes {
+    display: flex;
+    justify-content: space-evenly;
+    width: 100%;
+}
+
+.eyes > div {
+    height: 20px;
+    width: 20px;
+    background: var(--greyBase);
+    box-shadow: inset 3px 4px var(--greyDark);
+    border-radius: 68% 6%; /* Maintain the eye shape */
+    transform: rotate(219deg); /* Maintain the original eye shape's rotation */
+    position: relative; /* Ensure relative positioning for child elements */
+    overflow: hidden; /* Hide any overflow from child elements */
+    animation: eyes-closed 1s ease-out forwards;
+}
+
+.eyes > div.open {
+    animation: eyes-open 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.eyes > div.open::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 3px; /* Width of the iris */
+    height: 0; /* Start with iris hidden */
+    background: white; /* Color of the iris */
+    transform: translate(-50%, -50%) rotate(141deg); /* Center the iris */
+    border-radius: 50%; /* Smooth edges */
+    animation: iris-open 0.6s 0.2s cubic-bezier(0.4, 0, 0.2, 1) forwards; /* Apply animation */
+}
+
+.eyes > div.open::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 16px; /* Width of the circle */
+    height: 0; /* Start with circle hidden */
+    background: rgb(0, 0, 0); /* Color of the circle */
+    transform: translate(-50%, -50%) rotate(141deg); /* Center the circle */
+    border-radius: 50%; /* Smooth edges */
+    z-index: -1; /* Ensure the circle is behind the iris */
+    animation: circle-open 0.6s 0.4s cubic-bezier(0.4, 0, 0.2, 1) forwards; /* Apply animation */
+}
+
+@keyframes eyes-open {
+    0% {
+        background: var(--greyBase);
+        box-shadow: inset 3px 4px var(--greyDark);
+    }
+    50% {
+        background: var(--greyDark);
+        box-shadow: none;
+    }
+    100% {
+        background: var(--greyDark);
+        box-shadow: none;
+    }
+}
+
+@keyframes iris-open {
+    0% {
+        height: 0;
+    }
+    50% {
+        height: 30%; /* Partially open at mid-point */
+    }
+    100% {
+        height: 50%; /* Fully open */
+    }
+}
+
+@keyframes circle-open {
+    0% {
+        height: 0;
+    }
+    75% {
+        height: 12px; /* Partially open later */
+    }
+    100% {
+        height: 16px; /* Fully open */
+    }
+}
+
+
+.nose {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    position: relative;
+    margin-top: 10px;
+}
+
+.nose:before {
+    content: '';
+    height: 0;
+    width: 0;
+    border-top: 6px solid var(--greyDark);
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+    margin-top: 4px;
+}
+
+.mustache {
+    position: absolute;
+    width: 100%;
+    top: -11px;
+    transform: translateX(-50%);
+    display: flex;
+    justify-content: center;
+}
+
+.mustache > div {
+    height: 12px;
+    width: 3px;
+    background: var(--greyDark);
+    transform: rotate(90deg);
+    position: absolute;
+}
+
+.mustache > div:nth-child(1) {
+    top: -10px;
+}
+
+.mustache > div:nth-child(2) {
+    top: 0;
+}
+
+.mustache > div:nth-child(3) {
+    top: 10px;
+}
+
+.mustache:nth-of-type(2) {
+    left: calc(65px + 47px);
+}
+
+.body {
+    background: var(--greyBase);
+    width: 236px;
+    height: 120px;
+    border-radius: 237% 242% 196% 216%;
+    position: absolute;
+    top: 51px;
+}
+
+.tail {
+    width: 85px;
+    height: 120px;
+    position: absolute;
+    left: 145px;
+    top: 2%;
+    border-radius: 200px;
+    box-shadow: inset 23px 34px 0 var(--greyBase);
+    transform: rotate(-234deg);
+}
+
+.sleep {
+    position: absolute;
+    bottom: 215px;
+    transform: translateX(-50%);
+    font-size: 1.8rem;
+    color: var(--greyDark);
+    z-index: -1;
+    white-space: nowrap;
+    animation: zzz-fade 1s ease-out forwards; /* Gradual stop animation */
+}
+
+.sleep > div {
+    position: absolute;
+    font-size: 1.8rem;
+    color: var(--greyDark);
+}
+
+/* Position each z separately and stagger animation */
+.sleep > div:nth-child(1) {
+    left: 0;
+    animation: zzz 5s 0s ease-out infinite;
+}
+
+.sleep > div:nth-child(2) {
+    left: 20px;
+    animation: zzz 5s 0.5s ease-out infinite;
+}
+
+.sleep > div:nth-child(3) {
+    left: 40px;
+    animation: zzz 5s 1s ease-out infinite;
+}
+
+.sleep > div:nth-child(4) {
+    left: 60px;
+    animation: zzz 5s 1.5s ease-out infinite;
+}
+
+.sleep > div:nth-child(5) {
+    left: 80px;
+    animation: zzz 5s 2s ease-out infinite;
+}
+
+.sleep > div:nth-child(6) {
+    left: 100px;
+    animation: zzz 5s 2.5s ease-out infinite;
+}
+
+@keyframes zzz {
+    0% {
+        transform: translate(0, 0);
+        opacity: 1;
+    }
+    100% {
+        transform: translate(0, -60px); /* Adjusted movement distance */
+        opacity: 0;
+    }
+}
+
+.cat.awake .sleep {
+    animation: none; /* Stop zzz animation when awake */
+    display: none; /* Hide "zzz" when awake */
+}
+
+.bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -10;
+    background: transparent; /* Ensure it's transparent if you want no color */
+}

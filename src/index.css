@@ -1,0 +1,16 @@
+/* src/index.css */
+body {
+  background-color: #ffe5b4;
+  overflow: hidden;
+  margin: 0;
+  height: 100vh;
+  width: 100vw;
+  font-family: 'Rubik Bubbles', Arial, sans-serif; /* Use Rubik Bubbles as the primary font */
+}
+
+/* Example class for specific usage */
+.rubik-bubbles-regular {
+  font-family: 'Rubik Bubbles', Arial, sans-serif;
+  font-weight: 400;
+  font-style: normal;
+} 

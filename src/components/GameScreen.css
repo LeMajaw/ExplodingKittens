@@ -1,0 +1,258 @@
+/* Keyframes for the grow-and-return animation */
+@keyframes growAndReturn {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.7); /* Larger growth for click effect */
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+.game-screen-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center horizontally */
+    justify-content: center;
+    min-height: 100vh; /* Full viewport height */
+}
+
+.title-container {
+    display: flex;
+    align-items: center; /* Align items vertically center */
+    width: 100%; /* Full width of the container */
+    justify-content: center; /* Center title and button horizontally */
+    position: relative; /* For positioning the back button */
+    margin-bottom: 20px; /* Add space between title and stats list */
+}
+
+.game-screen-title {
+    font-size: 2.7rem; /* Larger font size for prominence */
+    font-weight: bold; /* Make the font bold */
+    color: #333333; /* Dark gray color for text */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2); /* Soft shadow for depth */
+    padding: 10px 20px; /* Padding inside the title */
+    border-radius: 10px; /* Rounded corners */
+    background: linear-gradient(135deg, #ffcc00, #ff9900); /* Gradient background */
+    color: #ffffff; /* White text color */
+    text-align: center; /* Center text within the title */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Shadow for depth */
+    text-transform: uppercase; /* Uppercase text for emphasis */
+    letter-spacing: 2px; /* Increased letter spacing */
+    flex: 1; /* Allow title to take available space */
+}
+
+.back-button {
+    cursor: pointer;
+    background-color: #ffcc00;
+    border: none; /* Remove default border */
+    border-radius: 50%;
+    width: 50px; /* Circular size */
+    height: 50px; /* Circular size */
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Initial shadow */
+    transform: translateY(-50%); /* Adjust vertical alignment */
+    transition: background-color 0.2s, box-shadow 0.2s; /* Smooth transitions */
+    font-size: 1.5rem; /* Adjust font size if needed */
+}
+
+.back-button:hover {
+    background-color: #ff9900; /* Darker color on hover */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* Enhanced shadow on hover */
+}
+
+.back-button:active {
+    background-color: #e6b800; /* Slightly darker color on click */
+}
+
+.back-button:active::after {
+    content: "";
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 0.2); /* Ripple color */
+    width: 300%; /* Larger than button */
+    height: 300%; /* Larger than button */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    animation: ripple 0.6s linear;
+}
+
+@keyframes ripple {
+    from {
+        transform: translate(-50%, -50%) scale(0);
+        opacity: 0.5;
+    }
+    to {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 0;
+    }
+}
+
+.game-stats-list {
+    flex-grow: 1;
+    list-style-type: none;
+    padding: 0;
+    width: 80%;
+    text-align: center;
+    box-sizing: border-box;
+}
+
+.game-stats-list li {
+    position: relative;
+    margin: 20px 0;
+    padding: 20px;
+    background-color: #f0f0f0; /* Light gray background */
+    border-radius: 15px; /* Rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Soft shadow */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 125px;
+}
+
+.square-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    width: 90%;
+    height: 80%;
+}
+
+.icon-square, .value-square {
+    position: absolute;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.icon-square {
+    left: 0;
+    top: 50%;
+    width: 15%;
+    transform: translateY(-50%);
+}
+
+.value-square {
+    right: 0;
+    top: 50%;
+    width: 50%;
+    transform: translateY(-50%);
+}
+
+.icon-square .icon {
+    font-size: 80px; /* Large icon size */
+    color: #333333; /* Icon color */
+}
+
+.value-square .value {
+    font-size: 70px; /* Large value size */
+    color: #ff9900; /* Value color */
+    font-weight: bold;
+}
+
+.buttons-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px; /* Space between buttons */
+    margin: 20px 0;
+}
+
+.icon-container {
+    font-size: 3rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.2s;
+}
+
+.control-button:hover .icon-container {
+    transform: scale(1.2);
+}
+
+.control-button {
+    cursor: pointer;
+    background-color: #ffcc00;
+    border: none; /* Remove default border */
+    border-radius: 25%;
+    width: 100px; /* Circular size */
+    height: 100px; /* Circular size */
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Initial shadow */
+    position: relative; /* For ripple effect */
+    overflow: hidden; /* Hide ripple overflow */
+    transition: background-color 0.2s, box-shadow 0.2s; /* Smooth transitions */
+}
+
+.control-button:hover {
+    background-color: #ff9900; /* Darker color on hover */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* Enhanced shadow on hover */
+}
+
+.control-button:active {
+    background-color: #e6b800; /* Slightly darker color on click */
+}
+
+.control-button:active::after {
+    content: "";
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 0.2); /* Ripple color */
+    width: 300%; /* Larger than button */
+    height: 300%; /* Larger than button */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    animation: ripple 0.6s linear;
+}
+
+.control-button:disabled {
+    cursor: not-allowed; /* Change cursor for disabled buttons */
+    background-color: #f0f0f0; /* Gray background for disabled state */
+    color: #cccccc; /* Light gray text */
+    box-shadow: none; /* Remove shadow */
+}
+
+.control-button:disabled:hover {
+    background-color: #f0f0f0; /* Ensure hover doesn't affect disabled buttons */
+    box-shadow: none; /* Disable hover shadow */
+}
+
+.control-button:disabled .icon-container {
+    transform: none; /* Disable animation effects for disabled buttons */
+}
+
+@media (max-width: 768px) {
+    .back-button {
+        width: 65px; /* Smaller size on smaller screens */
+        height: 65px; /* Smaller size on smaller screens */
+        font-size: 2rem; /* Smaller font size */
+    }
+
+    .control-button {
+        width: 80px; /* Smaller size on smaller screens */
+        height: 80px; /* Smaller size on smaller screens */
+        font-size: 1.2rem; /* Smaller font size */
+    }
+
+    .game-screen-title {
+        font-size: 2rem; /* Smaller title on smaller screens */
+    }
+
+    .icon-square .icon, .value-square .value {
+        font-size: 60px; /* Smaller icon and value size */
+    }
+}
