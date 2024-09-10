@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFile, faUsers, faUserPlus, faUserMinus, faBomb, faFileCirclePlus, faFileCircleMinus, faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 
 const GameScreen = () => {
-  const navigate = useNavigate(); // Use navigate hook to handle navigation
+  const navigate = useNavigate();
   const location = useLocation();
   const { players } = location.state || {};
   const initialPlayers = players || 2;
