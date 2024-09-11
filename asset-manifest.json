@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/ExplodingKittens/static/css/main.61e532d8.css",
-    "main.js": "/ExplodingKittens/static/js/main.5c4cefcc.js",
+    "main.css": "/ExplodingKittens/static/css/main.3e8946c5.css",
+    "main.js": "/ExplodingKittens/static/js/main.ebb763d9.js",
     "static/media/paw.png": "/ExplodingKittens/static/media/paw.4a431a6f93c97a661ec9.png",
     "service-worker.js": "/ExplodingKittens/service-worker.js",
     "static/media/paw_selected.png": "/ExplodingKittens/static/media/paw_selected.ab6bed5332f5659fd0e7.png",
     "index.html": "/ExplodingKittens/index.html",
-    "main.61e532d8.css.map": "/ExplodingKittens/static/css/main.61e532d8.css.map",
-    "main.5c4cefcc.js.map": "/ExplodingKittens/static/js/main.5c4cefcc.js.map"
+    "main.3e8946c5.css.map": "/ExplodingKittens/static/css/main.3e8946c5.css.map",
+    "main.ebb763d9.js.map": "/ExplodingKittens/static/js/main.ebb763d9.js.map"
   },
   "entrypoints": [
-    "static/css/main.61e532d8.css",
-    "static/js/main.5c4cefcc.js"
+    "static/css/main.3e8946c5.css",
+    "static/js/main.ebb763d9.js"
   ]
 }
