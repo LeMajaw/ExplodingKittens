@@ -11,6 +11,14 @@ body {
 /* Example class for specific usage */
 .rubik-bubbles-regular {
   font-family: 'Rubik Bubbles', Arial, sans-serif;
-  font-weight: 400;
-  font-style: normal;
-} 
+}
+
+/* Remove focus outline for all elements */
+* {
+  outline: none;
+}
+
+/* Disable tap highlight on mobile */
+* {
+  -webkit-tap-highlight-color: transparent;
+}

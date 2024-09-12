@@ -23,21 +23,23 @@ document.head.appendChild(link3);
 
 const root = createRoot(document.getElementById('root'));
 
+// Service Worker Registration
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    const swUrl = `${process.env.PUBLIC_URL}/service-worker.js`;
+    navigator.serviceWorker
+      .register(swUrl, { scope: '/ExplodingKittens/' }) // Adjust scope to match the path
+      .then(registration => {
+        console.log('Service Worker registered with scope: ', registration.scope);
+      })
+      .catch(error => {
+        console.error('Service Worker registration failed:', error);
+      });
+  });
+}
+
 root.render(
   <BrowserRouter basename="/ExplodingKittens">
     <App />
   </BrowserRouter>
 );
-
-// Register service worker
-if ('serviceWorker' in navigator) {
-  window.addEventListener('load', () => {
-    navigator.serviceWorker.register(`${process.env.PUBLIC_URL}/service-worker.js`)
-      .then((registration) => {
-        console.log('ServiceWorker registration successful with scope: ', registration.scope);
-      })
-      .catch((error) => {
-        console.log('ServiceWorker registration failed: ', error);
-      });
-  });
-}

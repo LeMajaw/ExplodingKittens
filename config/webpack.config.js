@@ -339,6 +339,16 @@ module.exports = function (webpackEnv) {
     module: {
       strictExportPresence: true,
       rules: [
+        {
+          test: /\.mjs$/,
+          exclude: /node_modules/,
+          use: {
+            loader: 'babel-loader',
+            options: {
+              presets: ['@babel/preset-env'],
+            },
+          },
+        },
         // Handle node_modules packages that contain sourcemaps
         shouldUseSourceMap && {
           enforce: 'pre',
@@ -661,41 +671,32 @@ module.exports = function (webpackEnv) {
         resourceRegExp: /^\.\/locale$/,
         contextRegExp: /moment$/,
       }),
-
-      isEnvProduction &&
-      new WorkboxWebpackPlugin.InjectManifest({
-        swSrc: './public/service-worker.js', // Path to your custom service worker
-        swDest: 'service-worker.js', // Output path for the generated service worker
-      }),
-
-      // Optional: Add WorkboxWebpackPlugin.GenerateSW if you want to use it instead
-      // isEnvProduction &&
-      // fs.existsSync(swSrc) &&
-      // new WorkboxWebpackPlugin.GenerateSW({
-      //   clientsClaim: true,
-      //   skipWaiting: true,
-      //   maximumFileSizeToCacheInBytes: 5 * 1024 * 1024, // 5MB file size limit for caching
-      //   runtimeCaching: [
-      //     {
-      //       urlPattern: ({ request }) => request.destination === 'document',
-      //       handler: 'NetworkFirst',
-      //     },
-      //     {
-      //       urlPattern: ({ request }) => request.destination === 'script' || request.destination === 'style',
-      //       handler: 'CacheFirst',
-      //       options: {
-      //         cacheName: 'static-resources',
-      //         expiration: {
-      //           maxEntries: 50,
-      //           maxAgeSeconds: 30 * 24 * 60 * 60, // Cache for 30 Days
-      //         },
-      //       },
-      //     },
-      //   ],
-      // }),
       // Generate a service worker script that will precache, and keep up to date,
-      // the HTML & assets that are part of the webpack build.
-      // Replace InjectManifest plugin with GenerateSW plugin
+      // the HTML & assets that are part of the webpack build. isEnvProduction &&
+      new WorkboxWebpackPlugin.GenerateSW({
+        clientsClaim: true,
+        skipWaiting: true,
+        maximumFileSizeToCacheInBytes: 5 * 1024 * 1024, // 5MB file size limit
+        runtimeCaching: [
+          {
+            urlPattern: ({ request }) => request.destination === 'document',
+            handler: 'NetworkFirst',
+          },
+          {
+            urlPattern: ({ request }) => request.destination === 'script' || request.destination === 'style',
+            handler: 'CacheFirst',
+            options: {
+              cacheName: 'static-resources',
+              expiration: {
+                maxEntries: 50,
+                maxAgeSeconds: 30 * 24 * 60 * 60, // Cache for 30 Days
+              },
+            },
+          },
+        ],
+        // Ensure that index.html is precached
+        include: [/\.(js|css|html|png|jpg|jpeg|svg)$/],
+      }),
       // TypeScript type checking
       useTypeScript &&
       new ForkTsCheckerWebpackPlugin({
