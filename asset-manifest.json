@@ -1,16 +1,19 @@
 {
   "files": {
-    "main.css": "/ExplodingKittens/static/css/main.3e8946c5.css",
-    "main.js": "/ExplodingKittens/static/js/main.ebb763d9.js",
+    "main.css": "/ExplodingKittens/static/css/main.5f26b0a3.css",
+    "main.js": "/ExplodingKittens/static/js/main.e4b6d38d.js",
+    "workbox-14fbe2ec.js.map": "/ExplodingKittens/workbox-14fbe2ec.js.map",
+    "workbox-14fbe2ec.js": "/ExplodingKittens/workbox-14fbe2ec.js",
     "static/media/paw.png": "/ExplodingKittens/static/media/paw.4a431a6f93c97a661ec9.png",
-    "service-worker.js": "/ExplodingKittens/service-worker.js",
     "static/media/paw_selected.png": "/ExplodingKittens/static/media/paw_selected.ab6bed5332f5659fd0e7.png",
+    "service-worker.js.map": "/ExplodingKittens/service-worker.js.map",
+    "service-worker.js": "/ExplodingKittens/service-worker.js",
     "index.html": "/ExplodingKittens/index.html",
-    "main.3e8946c5.css.map": "/ExplodingKittens/static/css/main.3e8946c5.css.map",
-    "main.ebb763d9.js.map": "/ExplodingKittens/static/js/main.ebb763d9.js.map"
+    "main.5f26b0a3.css.map": "/ExplodingKittens/static/css/main.5f26b0a3.css.map",
+    "main.e4b6d38d.js.map": "/ExplodingKittens/static/js/main.e4b6d38d.js.map"
   },
   "entrypoints": [
-    "static/css/main.3e8946c5.css",
-    "static/js/main.ebb763d9.js"
+    "static/css/main.5f26b0a3.css",
+    "static/js/main.e4b6d38d.js"
   ]
 }
